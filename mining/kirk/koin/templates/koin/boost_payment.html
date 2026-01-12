@@ -1,0 +1,40 @@
+{% extends "koin/base.html" %}
+
+{% block title %}Complete Boost Payment{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h4 class="mb-0">Complete Payment</h4>
+        </div>
+        <div class="card-body">
+          <p class="mb-2">Send the exact amount shown to the Solana address below. Use the <strong>reference</strong> as the memo when sending so we can identify your payment.</p>
+
+          <dl class="row">
+            <dt class="col-4">Receiver</dt>
+            <dd class="col-8"><code>{{ sol_receiver }}</code></dd>
+
+            <dt class="col-4">Amount</dt>
+            <dd class="col-8">${{ price }}</dd>
+
+            <dt class="col-4">Reference (memo)</dt>
+            <dd class="col-8"><code>{{ reference }}</code></dd>
+          </dl>
+
+          <p class="text-muted">After sending, click the button below to let us check the blockchain. Confirmation may take a minute.</p>
+
+          <form method="post" action="{% url 'confirm_payment' purchase.id %}">
+            {% csrf_token %}
+            <button class="btn btn-primary">I've sent payment — check now</button>
+            <a href="{% url 'boosts' %}" class="btn btn-link">Cancel</a>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

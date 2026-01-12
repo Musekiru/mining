@@ -1,0 +1,41 @@
+{% extends "koin/base.html" %}
+
+{% block title %}Boosts{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h4 class="mb-0">Buy Boosts</h4>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">Choose a boost to temporarily increase your mining rate.</p>
+
+          <div class="row g-3">
+            {% for opt in options %}
+            <div class="col-12 col-md-4">
+              <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ opt.label }}</h5>
+                  <p class="card-text mb-2">Duration: {{ opt.minutes }} minutes</p>
+                  <p class="card-text fw-bold mb-3">Price: ${{ opt.price }}</p>
+
+                  <form method="post" action="{% url 'buy_boost' %}" class="mt-auto">
+                    {% csrf_token %}
+                    <input type="hidden" name="option" value="{{ opt.id }}">
+                    <button class="btn btn-primary w-100">Buy</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

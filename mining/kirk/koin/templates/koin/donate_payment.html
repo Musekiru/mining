@@ -1,0 +1,39 @@
+{% extends "koin/base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card my-4 shadow-sm">
+        <div class="card-header bg-white border-0">
+          <h3 class="mb-0">Donate — Payment</h3>
+          <small class="text-muted">Complete your donation by sending SOL to the receiver address below.</small>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <h6 class="text-muted mb-1">Receiver</h6>
+            <div class="fw-bold text-monospace">{{ sol_receiver }}</div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-muted mb-1">Amount (SOL)</h6>
+            <div class="fw-bold">{% if sol_amount %}{{ sol_amount }}{% else %}Any amount (optional){% endif %}</div>
+          </div>
+
+          <div class="mb-3">
+            <h6 class="text-muted mb-1">Reference (memo)</h6>
+            <div class="fw-bold text-monospace">{{ reference }}</div>
+            <small class="d-block text-muted">Put this exact string in your transaction memo so we can match the donation.</small>
+          </div>
+
+          <div class="mb-3">
+            <p class="text-muted small">After sending, you can return here and click "I've sent it" to ask us to check the chain. Automatic confirmation requires a provider integration (not configured).</p>
+            <a href="{% url 'donate' %}" class="btn btn-light">Back</a>
+            <a href="{% url 'confirm_donation' donation.id %}" class="btn btn-primary ms-2">I've sent it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
