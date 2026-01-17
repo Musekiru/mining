@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*", "mining.onrender.com"]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,6 +83,7 @@ WSGI_APPLICATION = 'kirk.wsgi.application'
 #     }
 # }
 
+#online database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
