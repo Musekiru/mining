@@ -229,8 +229,8 @@ def buy_boost(request):
 
 
 @login_required
-def donate(request):
-    """Donate page: user can enter a SOL amount (or leave blank) and get
+def presale(request):
+    """Presale page: user can enter a SOL amount (or leave blank) and get
     a receiver address + unique reference to include in the transaction memo.
     """
     if request.method == 'POST':
@@ -256,16 +256,16 @@ def donate(request):
             status='pending',
         )
 
-        return render(request, 'koin/donate_payment.html', {
+        return render(request, 'koin/presale_payment.html', {
             'donation': donation,
             'sol_receiver': sol_receiver,
             'sol_amount': sol_dec,
             'reference': reference,
         })
 
-    # GET -> show donate form and available active wallet(s)
+    # GET -> show presale form and available active wallet(s)
     wallets = SolanaWallet.objects.filter(active=True)
-    return render(request, 'koin/donate.html', {'wallets': wallets})
+    return render(request, 'koin/presale.html', {'wallets': wallets})
 
 
 @login_required
@@ -274,7 +274,7 @@ def confirm_donation(request, donation_id):
         donation = Donation.objects.get(id=donation_id, user=request.user)
     except Donation.DoesNotExist:
         messages.error(request, 'Donation not found')
-        return redirect('donate')
+        return redirect('presale')
 
     if donation.status == 'completed':
         messages.info(request, 'Donation already confirmed')
@@ -294,7 +294,7 @@ def confirm_donation(request, donation_id):
         return redirect('dashboard')
     else:
         messages.error(request, 'Donation not found on-chain yet. Please wait and try again.')
-        return redirect('donate')
+        return redirect('presale')
 
 
 

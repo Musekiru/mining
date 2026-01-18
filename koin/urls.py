@@ -15,6 +15,6 @@ urlpatterns = [
     path('boosts/', views.boosts, name='boosts'),
     path('boosts/buy/', views.buy_boost, name='buy_boost'),
     path('boosts/confirm/<int:purchase_id>/', views.confirm_payment, name='confirm_payment'),
-    path('donate/', views.donate, name='donate'),
-    path('donate/confirm/<int:donation_id>/', views.confirm_donation, name='confirm_donation'),
+    path('presale/', views.presale, name='presale'),
+    path('presale/confirm/<int:donation_id>/', views.confirm_donation, name='confirm_donation'),
 ]

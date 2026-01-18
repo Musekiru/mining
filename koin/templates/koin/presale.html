@@ -1,0 +1,52 @@
+{% extends "koin/base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card my-4 shadow-sm">
+        <div class="card-header bg-white border-0">
+          <h3 class="mb-0">Presale</h3>
+          <small class="text-muted">Participate in the presale by sending SOL to one of our receiver wallets.</small>
+        </div>
+        <div class="card-body">
+          <p>Please enter the SOL amount you want to send. After submitting you'll get a receiver address and a unique reference (memo) — include the reference in your transaction memo so we can match your transaction.</p>
+
+          <form method="post" action="{% url 'presale' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label class="form-label">Amount (SOL, optional)</label>
+              <input name="sol_amount" type="number" step="0.00000001" class="form-control" placeholder="e.g. 0.1">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Note (optional)</label>
+              <input name="note" type="text" class="form-control" placeholder="Message to the project">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Available receiver wallets</label>
+              <ul class="list-group">
+                {% for w in wallets %}
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="fw-bold">{{ w.label|default:'Receiver' }}</div>
+                      <div class="small text-monospace">{{ w.address }}</div>
+                    </div>
+                    <span class="badge bg-success">Active</span>
+                  </li>
+                {% empty %}
+                  <li class="list-group-item">No active wallets configured. Contact admin.</li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-primary">Proceed to Payment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

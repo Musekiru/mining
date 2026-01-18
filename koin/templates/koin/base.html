@@ -16,7 +16,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'landing' %}">Jerk For Kirk</a>
+            <a class="navbar-brand" style="font-family: 'Arial', 'Helvetica', sans-serif; font-size: 1.8rem; font-weight: bold; letter-spacing: 1px;" href="{% url 'landing' %}">Jerk For Kirk</a>
 
             <ul class="navbar-nav ms-auto">
 
@@ -27,17 +27,17 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link btn btn-outline-light btn-sm mx-1" href="{% url 'logout' %}">Logout</a>
                     </li>
 
                 {% else %}
                     <!-- Guest user -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                        <a class="nav-link btn btn-outline-light btn-sm mx-1" href="{% url 'register' %}">Sign Up</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link btn btn-light btn-sm mx-1" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif %}
 
@@ -78,17 +78,17 @@
                 <div class="col-md-4">
                     <h5>Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'landing' %}" class="text-light">Home</a></li>
-                        <li><a href="{% url 'donate' %}" class="text-light">Donate</a></li>
-                        <li><a href="mailto:JFKofficialcoin@gmail.com" target="_blank" rel="noopener noreferrer" class="text-light">Contact</a></li>
+                        <li class="mb-2"><a href="{% url 'landing' %}" class="btn btn-outline-light btn-sm">Home</a></li>
+                        <li class="mb-2"><a href="{% url 'presale' %}" class="btn btn-outline-light btn-sm">Presale</a></li>
+                        <li class="mb-2"><a href="mailto:JFKofficialcoin@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4">
                     <h5>Follow Us</h5>
-                    <a href="https://discord.gg/ThynMudE" target="_blank" rel="noopener noreferrer" class="text-light me-2">Discord</a>
-                    <a href="mailto:JFKofficialcoin@gmail.com" target="_blank" rel="noopener noreferrer" class="text-light me-2">Email</a>
-                    <a href="https://t.me/thejfkofficial" target="_blank" rel="noopener noreferrer" class="text-light">Telegram</a>
+                    <a href="https://discord.gg/ThynMudE" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm me-2">Discord</a>
+                    <a href="mailto:JFKofficialcoin@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm me-2">Email</a>
+                    <a href="https://t.me/thejfkofficial" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm">Telegram</a>
                 </div>
 
             </div>
