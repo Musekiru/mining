@@ -27,17 +27,17 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light btn-sm mx-1" href="{% url 'logout' %}">Logout</a>
+                        <a class="btn btn-outline-light btn-sm mx-1" href="{% url 'logout' %}">Logout</a>
                     </li>
 
                 {% else %}
                     <!-- Guest user -->
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light btn-sm mx-1" href="{% url 'register' %}">Sign Up</a>
+                        <a class="btn btn-outline-light btn-sm mx-1" href="{% url 'register' %}">Sign Up</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link btn btn-light btn-sm mx-1" href="{% url 'login' %}">Login</a>
+                        <a class="btn btn-light btn-sm mx-1" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif %}
 
@@ -160,6 +160,12 @@ body {
     color: white;
     text-align: center;
     padding: 75%;
+}
+
+/* Ensure button nav items display properly */
+.nav-item .btn {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 </style>
